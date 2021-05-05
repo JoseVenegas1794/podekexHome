@@ -20,8 +20,9 @@ object AppModule {
     fun providePokemonRepositoy(
         api: PokeApi
     ) = PokemonRepository(api)
-
-    fun providePodeApi(): PokeApi{
+    @Singleton
+    @Provides
+    fun providePokeApi(): PokeApi{
         return Retrofit.Builder().
         addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
